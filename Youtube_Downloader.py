@@ -2,11 +2,8 @@ import os
 import pytube
 from time import sleep, strftime
 import webbrowser
-
+import requests
 version = 1.0
-print("checking if program is up to date.")
-print("up to date!")
-sleep(2)
 
 def main():
     print("""
@@ -18,7 +15,7 @@ def main():
     ┗━┓┏┻━━┻━━┻━┻━━┻━━┻━━┛┗━━┛┗┛┗┛┗┛┗┻━┻━━┻┛┗┻━━┻━━┻┛
     ┏━┛┃
     ┗━━┛
-    """ + "\nVersion: " + str(version))
+    """ + "\nVersion: 1.0" )
     date = str(strftime('[%y-%m-%d]'))
     print(f'Todays Date: {date}')
     print("Welcome!\nChoose Opion\n1.Download\n2.Discord Community")
@@ -61,7 +58,7 @@ def anwsers():
                     checking = "https://www.youtube.com/watch?v="
                     if link.startswith(checking):
                         print("valid url!")
-                        
+
                         clear()
                         url = pytube.YouTube(str(link))
                         print(f'Downloading the video: {url.title}')
@@ -75,7 +72,8 @@ def anwsers():
                             main()
                         else:
                             clear()
-                            print("Semms like video didn't downloaded. To make sure, please check your directory to just make sure.")
+                            print("System didn't saw the file that this program made")
+                            print("MAKE SURE TO LOOK AT YOUR FOLDER AND SEE IF YOUR VIDEO IS DOWNLOADED")
                             print("Going into the menu in 10 seconds...")
                             sleep(10)
                             main()
