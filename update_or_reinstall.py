@@ -3,7 +3,7 @@ from time import sleep
 
 print("LOGS:")
 print("[1] Opening the newest version from github...")
-url = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/Youtube_Downloader.py?token=ATGAC5VZFKBTT4EXBYDPPOLBVO7PO"
+url = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/Youtube_Downloader.py"
 print("Done.")
 print("[2] Checking if Youtube_Downloader.py exists...")
 r = requests.get(url)
