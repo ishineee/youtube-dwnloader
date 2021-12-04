@@ -8,10 +8,10 @@ version = 1.0
 def main():
     print("""
     YOUTUBE DWNLOADER
-    """ + "\nVersion: 1.0" )
+    """ + f"\nVersion: {str(version)} " )
     date = str(strftime('[%y-%m-%d]'))
     print(f'Todays Date: {date}')
-    print("Welcome!\nChoose Opion\n1.Download\n2.Discord Community")
+    print("Welcome!\nChoose Option\n1.Download\n2.Discord Community")
     anwsers()
 
 
@@ -26,12 +26,12 @@ def anwsers():
     anwser = input(" >> ")
     if anwser == "2":
         print("discord link is opening...")
-        webbrowser.open_new_tab("https://discord.gg/xthqMZjp")
+        webbrowser.open_new_tab("https://discord.gg/rD4xYt4ZrT")
         sleep(2)
         main()
     if anwser == "1":
         clear()
-        print("Before you download a video, please input what do you want to download\nFor 1 download ONLY one video\nfor 2 download playlists")
+        print("Before you download a video, please input what do you want to download\nFor 1 download ONLY one video\nfor 2 download playlist")
         
         downloadwhat = input(" >> ")
         if int(downloadwhat) == 1:
