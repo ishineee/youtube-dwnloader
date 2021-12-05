@@ -126,4 +126,5 @@ else:
     clear()
     while True:
         print("You need to update your version!\nUse the update_or_reinstall.py to update your code quickly.")
+        print("or you can download .exe file from release section")
         sleep(5)
