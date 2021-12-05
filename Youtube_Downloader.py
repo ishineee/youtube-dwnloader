@@ -3,7 +3,7 @@ import pytube
 from time import sleep, strftime
 import webbrowser
 import requests
-version = 1.0
+
 
 def main():
     print("""
@@ -28,6 +28,7 @@ def anwsers():
         print("discord link is opening...")
         webbrowser.open_new_tab("https://discord.gg/rD4xYt4ZrT")
         sleep(2)
+        clear()
         main()
     if anwser == "1":
         clear()
@@ -35,18 +36,20 @@ def anwsers():
         
         downloadwhat = input(" >> ")
         if int(downloadwhat) == 1:
+            clear()
             print("To start, you need to give the directory where you want to save.\nPlease input the directory.")
             path = input(" >> ")
             if not os.path.exists(path):
+                clear()
                 print("ERROR")
                 print("Seems like directory you want to save the file doesn't exist. Please input the valid directory")
             else:
                 os.chdir(path)
-            
+                clear()
                 print("Sweet! Now you need to give the youtube link that you want to download.")
                 while True:
                     link = str(input(" >> "))
-                
+                    clear()
                     print("checking the link if it's valid to avoid the errors...")
                     checking = "https://www.youtube.com/watch?v="
                     if link.startswith(checking):
@@ -76,21 +79,26 @@ def anwsers():
 
 
         if int(downloadwhat) == 2:
+            clear()
             print("To start, you need to give the directory where you want to save.\nPlease input the directory.")
             path = input(" >> ")
             if not os.path.exists(path):
+                clear()
                 print("ERROR")
                 print("Seems like directory you want to save the file doesn't exist. Please input the valid directory")
 
             else:
                 os.chdir(path)
+                clear()
                 print("Sweet! Now you need to give the link to playlist that you want to download.")
-                while True:
+                while True:                
                     link = str(input(" >> "))
+                    clear()
                     print("checking the link if it's valid to avoid the errors...")
                     checking = "https://www.youtube.com/playlist?list="
                     if link.startswith(checking):
                         print("valid url!")
+                        clear()
                         p = pytube.Playlist(link)
                         print(f'Downloading: {p.title}')
                         for video in p.videos:
@@ -103,4 +111,19 @@ def anwsers():
                     else:
                         print("not valid link!")
 
-main()
+
+version = f'1.1\n'
+print("Checking the version")
+url = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/current_version.txt"
+r = requests.get(url)
+content_dec = r.content
+content_dec = content_dec.decode("utf-8")
+current_version = content_dec
+if str(version) == str(current_version):
+    clear()
+    main()
+else:
+    clear()
+    while True:
+        print("You need to update your version!\nUse the update_or_reinstall.py to update your code quickly.")
+        sleep(5)
