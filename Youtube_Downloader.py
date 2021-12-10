@@ -3,8 +3,13 @@ import pytube
 from time import sleep, strftime
 import webbrowser
 import requests
+import threading
+import itertools
+import sys
+
 
 def main():
+    clear()
     print("""
     YOUTUBE DWNLOADER
     """ + f"\nVersion: {str(version)} " )
@@ -57,23 +62,34 @@ def anwsers():
 
                         clear()
                         url = pytube.YouTube(str(link))
-                        print(f'Downloading the video: {url.title}')
+                        done = False
+                        def animate():
+                            for c in itertools.cycle(['|', '/', '-', '\\']):
+                                if done:
+                                    break
+                                sys.stdout.write(f'\rDownloading the video: {url.title} {c}')
+                                sys.stdout.flush()
+                                sleep(0.1)
+                            sys.stdout.write('\rDone!')
+                        t = threading.Thread(target=animate)
+                        t.start()
                         video = url.streams.filter(progressive=True).last()
                         video.download()
                         video_check = f'{path}\{url.title}.mp4'
                         if os.path.exists(video_check):
                             clear()
+                            done = True
                             print("Success! Going back into the menu...")
                             sleep(2)
                             main()
                         else:
                             clear()
+                            done = True
                             print("System didn't saw the file that this program made")
                             print("MAKE SURE TO LOOK AT YOUR FOLDER AND SEE IF YOUR VIDEO IS DOWNLOADED")
                             print("Going into the menu in 10 seconds...")
                             sleep(10)
-                            main()
-                                
+                            main()           
                     else:
                         print("Link is not valid. Enter valid one.")
 
@@ -86,7 +102,6 @@ def anwsers():
                 clear()
                 print("ERROR")
                 print("Seems like directory you want to save the file doesn't exist. Please input the valid directory")
-
             else:
                 os.chdir(path)
                 clear()
@@ -121,7 +136,8 @@ def anwsers():
             print("free minecraft premium allah 100 percent legit")
             print("\n input 1 if u want to go back")
             goto = input(" >> ")
-        
+            if str(goto) == "1":
+                main()
         if anwser != "1" or "2" or "3":
             print("Not valid anwser")
             anwsers()
@@ -136,6 +152,7 @@ content_dec = content_dec.decode("utf-8")
 current_version = content_dec
 if str(version) == str(current_version):
     clear()
+    print("Version is up to date!")
     main()
 else:
     clear()
@@ -149,17 +166,16 @@ else:
         update.downloadlatestversion()
     else:
         clear()
-        print("you didn't downloader update.py!")
-        print("downloading..")
-        url = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/update.py"
-        content_dec = r.content
+        print("you didn't download update.py!")
+        print("downloading it for you..")
+        url2 = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/update.py"
+        r2 = requests.get(url2)
+        content_dec = r2.content
         content_dec = content_dec.decode("utf-8")
         f = open("update.py", "a")
         f.write(content_dec)
         print("Done.")
-        print("Downloading the newest version in a second!")
-        sleep(1)
-        import update
-        update.downloadlatestversion()
+        sleep(2)
+        clear()
         while True:
             print("restart the script!")        
