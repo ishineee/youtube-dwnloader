@@ -10,7 +10,7 @@ def main():
     """ + f"\nVersion: {str(version)} " )
     date = str(strftime('[%y-%m-%d]'))
     print(f'Todays Date: {date}')
-    print("Welcome!\nChoose Option\n1.Download\n2.Discord Community")
+    print("Welcome!\nChoose Option\n1.Download\n2.Discord Community\n3.Info")
     anwsers()
 
 
