@@ -4,7 +4,6 @@ from time import sleep, strftime
 import webbrowser
 import requests
 
-
 def main():
     print("""
     YOUTUBE DWNLOADER
@@ -24,6 +23,7 @@ def clear():
 
 def anwsers():
     anwser = input(" >> ")
+
     if anwser == "2":
         print("discord link is opening...")
         webbrowser.open_new_tab("https://discord.gg/rD4xYt4ZrT")
@@ -32,9 +32,9 @@ def anwsers():
         main()
     if anwser == "1":
         clear()
-        print("Before you download a video, please input what do you want to download\nFor 1 download ONLY one video\nfor 2 download playlist")
-        
+        print("Before you download a video, please input what do you want to download\nFor 1 download ONLY one video\nfor 2 download playlist")        
         downloadwhat = input(" >> ")
+
         if int(downloadwhat) == 1:
             clear()
             print("To start, you need to give the directory where you want to save.\nPlease input the directory.")
@@ -110,6 +110,21 @@ def anwsers():
                         main()
                     else:
                         print("not valid link!")
+            
+
+        if int(anwser) == 3:
+            print("Main dev: ishineee")
+            print("Download system has been made by PyTube developers not me!")
+            print("\nTo Do List:")
+            print("- My own download system")
+            print("- Download system for other sites")
+            print("free minecraft premium allah 100 percent legit")
+            print("\n input 1 if u want to go back")
+            goto = input(" >> ")
+        
+        if anwser != "1" or "2" or "3":
+            print("Not valid anwser")
+            anwsers()
 
 
 version = f'1.1\n'
@@ -124,7 +139,27 @@ if str(version) == str(current_version):
     main()
 else:
     clear()
-    while True:
-        print("You need to update your version!\nUse the update_or_reinstall.py to update your code quickly.")
-        print("or you can download .exe file from release section")
-        sleep(5)
+    print("Your version is Outdated!")
+    print("This file will be updated in 5 seconds.")
+    sleep(5)
+    update_filename_check = "update.py"
+    if os.path.exists(update_filename_check):
+        clear()
+        import update
+        update.downloadlatestversion()
+    else:
+        clear()
+        print("you didn't downloader update.py!")
+        print("downloading..")
+        url = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/update.py"
+        content_dec = r.content
+        content_dec = content_dec.decode("utf-8")
+        f = open("update.py", "a")
+        f.write(content_dec)
+        print("Done.")
+        print("Downloading the newest version in a second!")
+        sleep(1)
+        import update
+        update.downloadlatestversion()
+        while True:
+            print("restart the script!")        
