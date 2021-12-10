@@ -143,7 +143,7 @@ def anwsers():
             anwsers()
 
 
-version = f'1.1\n'
+version = f'1.12311\n'
 print("Checking the version")
 url = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/current_version.txt"
 r = requests.get(url)
@@ -170,10 +170,11 @@ else:
         print("downloading it for you..")
         url2 = "https://raw.githubusercontent.com/ishineee/youtube-dwnloader/main/update.py"
         r2 = requests.get(url2)
-        content_dec = r2.content
-        content_dec = content_dec.decode("utf-8")
-        f = open("update.py", "a")
-        f.write(content_dec)
+        f2 = open("update.py", "w")
+        content_dec2 = r2.content
+        content_dec2 = content_dec2.decode("utf-8")
+        f2.write(content_dec2)
+        f2.close()
         print("Done.")
         sleep(2)
         clear()
