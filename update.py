@@ -22,5 +22,5 @@ def downloadlatestversion():
     f.write(dowolnie)
     sleep(3)
     print("Done.")
-    print("Newest version has been downloaded. Have fun!")
+    print("Newest version has been downloaded.")
     sleep(2)
